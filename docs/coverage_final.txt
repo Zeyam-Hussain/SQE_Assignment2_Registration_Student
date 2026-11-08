@@ -1,0 +1,162 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.5.0
+rootdir: /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student
+configfile: pytest.ini
+plugins: cov-7.1.0, anyio-4.10.0
+collected 43 items
+
+tests/test_blackbox.py .FF........F........FF.....F.F...F.               [ 81%]
+tests/test_whitebox.py .....F.F                                          [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_dup_dues1_dues_block ___________________________
+
+    @pytest.mark.trace("A2-TID-8", "DT-01")
+    def test_dup_dues1_dues_block():  # FR-04
+>       assert registration_decision(make_student(outstanding_dues=1), make_course()) == "DUES_BLOCK"
+E       AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E         
+E         - DUES_BLOCK
+E         + REGISTERED
+
+tests/test_blackbox.py:51: AssertionError
+_______________________ test_dup_full_course_waitlisted ________________________
+
+    @pytest.mark.trace("A2-TID-9", "DT-05")
+    def test_dup_full_course_waitlisted():  # FR-08
+>       assert registration_decision(make_student(), make_course(capacity=30, enrolled=30)) == "WAITLISTED"
+E       AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E         
+E         - WAITLISTED
+E         + REGISTERED
+
+tests/test_blackbox.py:56: AssertionError
+________________________________ test_a2_tid_2 _________________________________
+
+    @pytest.mark.trace("A2-TID-2")
+    def test_a2_tid_2():  # FR-01
+>       assert check_credit_limit(14, 4) is True
+E       assert False is True
+E        +  where False = check_credit_limit(14, 4)
+
+tests/test_blackbox.py:105: AssertionError
+________________________ test_a3_decision_table[DT-07] _________________________
+
+flags = {'dues': True, 'already': True, 'prereq': True, 'credit': True, ...}
+expected = 'DUES_BLOCK'
+
+    @pytest.mark.parametrize(
+        "flags,expected",
+        [pytest.param(f, e, id=i, marks=pytest.mark.trace(i)) for i, f, e in DT_CASES],
+    )
+    def test_a3_decision_table(flags, expected):
+        s, c = dt_case(**flags)
+>       assert registration_decision(s, c) == expected
+E       AssertionError: assert 'ALREADY_REGISTERED' == 'DUES_BLOCK'
+E         
+E         - DUES_BLOCK
+E         + ALREADY_REGISTERED
+
+tests/test_blackbox.py:173: AssertionError
+________________________ test_a3_decision_table[DT-08] _________________________
+
+flags = {'dues': True, 'full': True}, expected = 'DUES_BLOCK'
+
+    @pytest.mark.parametrize(
+        "flags,expected",
+        [pytest.param(f, e, id=i, marks=pytest.mark.trace(i)) for i, f, e in DT_CASES],
+    )
+    def test_a3_decision_table(flags, expected):
+        s, c = dt_case(**flags)
+>       assert registration_decision(s, c) == expected
+E       AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
+E         
+E         - DUES_BLOCK
+E         + REGISTERED
+
+tests/test_blackbox.py:173: AssertionError
+___________________ test_a4_register_waitlisted_appends_only ___________________
+
+    def test_a4_register_waitlisted_appends_only():  # FR-12
+        s, c = make_student(), make_course(enrolled=30)
+        before_s = copy.deepcopy(vars(s))
+        register_course(s, c)
+>       assert c.waitlist == ["S1"]
+E       AssertionError: assert [] == ['S1']
+E         
+E         Right contains one more item: 'S1'
+E         Use -v to get more diff
+
+tests/test_blackbox.py:197: AssertionError
+___________ test_a4_failed_registration_no_state_change[DUES_BLOCK] ____________
+
+flags = {'dues': True}
+
+    @pytest.mark.parametrize("flags", [
+        dict(dues=True), dict(already=True), dict(prereq=True), dict(credit=True),
+    ], ids=["DUES_BLOCK", "ALREADY_REGISTERED", "PREREQUISITES_MISSING", "CREDIT_LIMIT"])
+    def test_a4_failed_registration_no_state_change(flags):  # FR-12
+        s, c = dt_case(**flags)
+        before = snapshot(s, c)
+        register_course(s, c)
+>       assert snapshot(s, c) == before
+E       AssertionError: assert ({'student_id...ed': 11, ...}) == ({'student_id...ed': 10, ...})
+E         
+E         At index 0 diff: {'student_id': 'S1', 'completed_courses': set(), 'current_credits': 13, 'outstanding_dues': 1, 'registered_courses': {'C1'}} != {'student_id': 'S1', 'completed_courses': set(), 'current_credits': 10, 'outstanding_dues': 1, 'registered_courses': set()}
+E         Use -v to get more diff
+
+tests/test_blackbox.py:215: AssertionError
+__________________________ test_a4_withdraw_enrolled ___________________________
+
+    def test_a4_withdraw_enrolled():  # FR-13
+        s = make_student(current_credits=13, registered_courses={"C1"})
+        c = make_course(credit_hours=3, enrolled=11)
+        assert withdraw_course(s, c) is True
+        assert "C1" not in s.registered_courses
+        assert s.current_credits == 10
+>       assert c.enrolled == 10
+E       AssertionError: assert 11 == 10
+E        +  where 11 = Course(code='C1', credit_hours=3, capacity=30, enrolled=11, prerequisites=set(), waitlist=[]).enrolled
+
+tests/test_blackbox.py:224: AssertionError
+______________ test_wb_06_waitlist_branch_student_already_listed _______________
+
+    @pytest.mark.trace("WB-06")
+    def test_wb_06_waitlist_branch_student_already_listed():
+        s, c = make_student(), make_course(capacity=30, enrolled=30, waitlist=["S1"])
+>       assert registration_decision(s, c) == "WAITLISTED"
+E       AssertionError: assert 'REGISTERED' == 'WAITLISTED'
+E         
+E         - WAITLISTED
+E         + REGISTERED
+
+tests/test_whitebox.py:67: AssertionError
+_________________ test_wb_08_prerequisites_partially_completed _________________
+
+    @pytest.mark.trace("WB-08")
+    def test_wb_08_prerequisites_partially_completed():
+>       assert prerequisites_satisfied({"CS101"}, {"CS101", "MATH101"}) is False
+E       AssertionError: assert True is False
+E        +  where True = prerequisites_satisfied({'CS101'}, {'CS101', 'MATH101'})
+
+tests/test_whitebox.py:82: AssertionError
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.9-final-0 ________________
+
+Name              Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------
+registration.py      57      2     26      2    95%   59, 71
+-------------------------------------------------------------
+TOTAL                57      2     26      2    95%
+=========================== short test summary info ============================
+FAILED tests/test_blackbox.py::test_dup_dues1_dues_block - AssertionError: as...
+FAILED tests/test_blackbox.py::test_dup_full_course_waitlisted - AssertionErr...
+FAILED tests/test_blackbox.py::test_a2_tid_2 - assert False is True
+FAILED tests/test_blackbox.py::test_a3_decision_table[DT-07] - AssertionError...
+FAILED tests/test_blackbox.py::test_a3_decision_table[DT-08] - AssertionError...
+FAILED tests/test_blackbox.py::test_a4_register_waitlisted_appends_only - Ass...
+FAILED tests/test_blackbox.py::test_a4_failed_registration_no_state_change[DUES_BLOCK]
+FAILED tests/test_blackbox.py::test_a4_withdraw_enrolled - AssertionError: as...
+FAILED tests/test_whitebox.py::test_wb_06_waitlist_branch_student_already_listed
+FAILED tests/test_whitebox.py::test_wb_08_prerequisites_partially_completed
+======================== 10 failed, 33 passed in 0.17s =========================
