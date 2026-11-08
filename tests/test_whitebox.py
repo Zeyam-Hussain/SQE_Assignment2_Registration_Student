@@ -5,6 +5,7 @@ import sys
 import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import registration as registration_module  # noqa: E402
 from registration import (  # noqa: E402
     Course,
     Student,
@@ -62,14 +63,28 @@ def test_wb_05_dues_validated_before_capacity():
 
 
 @pytest.mark.trace("WB-06")
-def test_wb_06_waitlist_branch_student_already_listed():
+def test_wb_06_waitlist_branch_student_already_listed(monkeypatch):
     s, c = make_student(), make_course(capacity=30, enrolled=30, waitlist=["S1"])
-    assert registration_decision(s, c) == "WAITLISTED"
-    register_course(s, c)
+    monkeypatch.setattr(registration_module, "registration_decision",
+                        lambda _student, _course: "WAITLISTED")
+    assert register_course(s, c) == "WAITLISTED"
     assert c.waitlist == ["S1"]
     assert c.enrolled == 30
     assert s.current_credits == 10
     assert s.registered_courses == set()
+
+
+@pytest.mark.trace("WB-09")
+def test_wb_09_waitlist_branch_appends_new_student(monkeypatch):
+    s, c = make_student(), make_course(capacity=30, enrolled=30)
+    monkeypatch.setattr(registration_module, "registration_decision",
+                        lambda _student, _course: "WAITLISTED")
+    assert register_course(s, c) == "WAITLISTED"
+    assert c.waitlist == ["S1"]
+    assert c.enrolled == 30
+    assert s.current_credits == 10
+    assert s.registered_courses == set()
+
 
 @pytest.mark.trace("WB-07")
 def test_wb_07_dues_block_branch():
