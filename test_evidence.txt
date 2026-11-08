@@ -3,114 +3,85 @@ platform linux -- Python 3.13.9, pytest-9.1.1, pluggy-1.5.0 -- /home/zeyam-hussa
 cachedir: .pytest_cache
 rootdir: /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student
 plugins: cov-7.1.0, anyio-4.10.0
-collecting ... collected 39 items
+collecting ... collected 35 items
 
-tests/test_blackbox.py::test_a1_tid_1 PASSED                             [  2%]
-tests/test_blackbox.py::test_a1_tid_2 PASSED                             [  5%]
-tests/test_blackbox.py::test_a1_tid_3 PASSED                             [  7%]
-tests/test_blackbox.py::test_a1_tid_4 PASSED                             [ 10%]
-tests/test_blackbox.py::test_a1_tid_5 PASSED                             [ 12%]
-tests/test_blackbox.py::test_a1_tid_6 PASSED                             [ 15%]
-tests/test_blackbox.py::test_a1_tid_7 PASSED                             [ 17%]
-tests/test_blackbox.py::test_a1_tid_8 PASSED                             [ 20%]
-tests/test_blackbox.py::test_a2_tid_1 PASSED                             [ 23%]
-tests/test_blackbox.py::test_a2_tid_2 FAILED                             [ 25%]
-tests/test_blackbox.py::test_a2_tid_3 PASSED                             [ 28%]
-tests/test_blackbox.py::test_a2_tid_4 PASSED                             [ 30%]
-tests/test_blackbox.py::test_a2_tid_5 PASSED                             [ 33%]
-tests/test_blackbox.py::test_a2_tid_6 PASSED                             [ 35%]
-tests/test_blackbox.py::test_a2_tid_7 PASSED                             [ 38%]
-tests/test_blackbox.py::test_a2_tid_8 FAILED                             [ 41%]
-tests/test_blackbox.py::test_a2_tid_9 FAILED                             [ 43%]
-tests/test_blackbox.py::test_a2_tid_10 PASSED                            [ 46%]
-tests/test_blackbox.py::test_a3_decision_table[DT-01] FAILED             [ 48%]
+tests/test_blackbox.py::test_dup_baseline_dues0_registered PASSED        [  2%]
+tests/test_blackbox.py::test_dup_dues1_dues_block FAILED                 [  5%]
+tests/test_blackbox.py::test_dup_full_course_waitlisted FAILED           [  8%]
+tests/test_blackbox.py::test_a1_tid_1 PASSED                             [ 11%]
+tests/test_blackbox.py::test_a1_tid_2 PASSED                             [ 14%]
+tests/test_blackbox.py::test_a1_tid_3 PASSED                             [ 17%]
+tests/test_blackbox.py::test_a1_tid_4 PASSED                             [ 20%]
+tests/test_blackbox.py::test_a1_tid_5 PASSED                             [ 22%]
+tests/test_blackbox.py::test_a1_tid_6 PASSED                             [ 25%]
+tests/test_blackbox.py::test_a1_tid_8 PASSED                             [ 28%]
+tests/test_blackbox.py::test_a2_tid_1 PASSED                             [ 31%]
+tests/test_blackbox.py::test_a2_tid_2 FAILED                             [ 34%]
+tests/test_blackbox.py::test_a2_tid_3 PASSED                             [ 37%]
+tests/test_blackbox.py::test_a2_tid_4 PASSED                             [ 40%]
+tests/test_blackbox.py::test_a2_tid_5 PASSED                             [ 42%]
+tests/test_blackbox.py::test_a2_tid_6 PASSED                             [ 45%]
+tests/test_blackbox.py::test_a2_tid_10 PASSED                            [ 48%]
 tests/test_blackbox.py::test_a3_decision_table[DT-02] PASSED             [ 51%]
-tests/test_blackbox.py::test_a3_decision_table[DT-03] PASSED             [ 53%]
-tests/test_blackbox.py::test_a3_decision_table[DT-04] PASSED             [ 56%]
-tests/test_blackbox.py::test_a3_decision_table[DT-05] FAILED             [ 58%]
-tests/test_blackbox.py::test_a3_decision_table[DT-06] PASSED             [ 61%]
-tests/test_blackbox.py::test_a3_decision_table[DT-07] FAILED             [ 64%]
-tests/test_blackbox.py::test_a3_decision_table[DT-08] FAILED             [ 66%]
-tests/test_blackbox.py::test_a3_decision_table[DT-09] PASSED             [ 69%]
-tests/test_blackbox.py::test_a3_decision_table[DT-10] PASSED             [ 71%]
-tests/test_blackbox.py::test_a3_decision_table[DT-11] PASSED             [ 74%]
-tests/test_blackbox.py::test_a4_decision_does_not_mutate PASSED          [ 76%]
-tests/test_blackbox.py::test_a4_register_success_updates_state PASSED    [ 79%]
-tests/test_blackbox.py::test_a4_register_waitlisted_appends_only FAILED  [ 82%]
-tests/test_blackbox.py::test_a4_waitlist_no_duplicate PASSED             [ 84%]
-tests/test_blackbox.py::test_a4_failed_registration_no_state_change[DUES_BLOCK] FAILED [ 87%]
-tests/test_blackbox.py::test_a4_failed_registration_no_state_change[ALREADY_REGISTERED] PASSED [ 89%]
-tests/test_blackbox.py::test_a4_failed_registration_no_state_change[PREREQUISITES_MISSING] PASSED [ 92%]
+tests/test_blackbox.py::test_a3_decision_table[DT-03] PASSED             [ 54%]
+tests/test_blackbox.py::test_a3_decision_table[DT-04] PASSED             [ 57%]
+tests/test_blackbox.py::test_a3_decision_table[DT-07] FAILED             [ 60%]
+tests/test_blackbox.py::test_a3_decision_table[DT-08] FAILED             [ 62%]
+tests/test_blackbox.py::test_a3_decision_table[DT-09] PASSED             [ 65%]
+tests/test_blackbox.py::test_a3_decision_table[DT-10] PASSED             [ 68%]
+tests/test_blackbox.py::test_a3_decision_table[DT-11] PASSED             [ 71%]
+tests/test_blackbox.py::test_a4_decision_does_not_mutate PASSED          [ 74%]
+tests/test_blackbox.py::test_a4_register_success_updates_state PASSED    [ 77%]
+tests/test_blackbox.py::test_a4_register_waitlisted_appends_only FAILED  [ 80%]
+tests/test_blackbox.py::test_a4_waitlist_no_duplicate PASSED             [ 82%]
+tests/test_blackbox.py::test_a4_failed_registration_no_state_change[DUES_BLOCK] FAILED [ 85%]
+tests/test_blackbox.py::test_a4_failed_registration_no_state_change[ALREADY_REGISTERED] PASSED [ 88%]
+tests/test_blackbox.py::test_a4_failed_registration_no_state_change[PREREQUISITES_MISSING] PASSED [ 91%]
 tests/test_blackbox.py::test_a4_failed_registration_no_state_change[CREDIT_LIMIT] PASSED [ 94%]
 tests/test_blackbox.py::test_a4_withdraw_enrolled FAILED                 [ 97%]
 tests/test_blackbox.py::test_a4_withdraw_not_registered_no_change PASSED [100%]
 
 =================================== FAILURES ===================================
-________________________________ test_a2_tid_2 _________________________________
+__________________________ test_dup_dues1_dues_block ___________________________
 
-    def test_a2_tid_2():
->       assert check_credit_limit(14, 4) is True
-E       assert False is True
-E        +  where False = check_credit_limit(14, 4)
-
-tests/test_blackbox.py:65: AssertionError
-________________________________ test_a2_tid_8 _________________________________
-
-    def test_a2_tid_8():
+    @pytest.mark.trace("A2-TID-8", "DT-01")
+    def test_dup_dues1_dues_block():  # FR-04
 >       assert registration_decision(make_student(outstanding_dues=1), make_course()) == "DUES_BLOCK"
 E       AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
 E         
 E         - DUES_BLOCK
 E         + REGISTERED
 
-tests/test_blackbox.py:86: AssertionError
-________________________________ test_a2_tid_9 _________________________________
+tests/test_blackbox.py:51: AssertionError
+_______________________ test_dup_full_course_waitlisted ________________________
 
-    def test_a2_tid_9():
+    @pytest.mark.trace("A2-TID-9", "DT-05")
+    def test_dup_full_course_waitlisted():  # FR-08
 >       assert registration_decision(make_student(), make_course(capacity=30, enrolled=30)) == "WAITLISTED"
 E       AssertionError: assert 'REGISTERED' == 'WAITLISTED'
 E         
 E         - WAITLISTED
 E         + REGISTERED
 
-tests/test_blackbox.py:89: AssertionError
-________________________ test_a3_decision_table[DT-01] _________________________
+tests/test_blackbox.py:56: AssertionError
+________________________________ test_a2_tid_2 _________________________________
 
-flags = {'dues': True}, expected = 'DUES_BLOCK'
+    @pytest.mark.trace("A2-TID-2")
+    def test_a2_tid_2():  # FR-01
+>       assert check_credit_limit(14, 4) is True
+E       assert False is True
+E        +  where False = check_credit_limit(14, 4)
 
-    @pytest.mark.parametrize("flags,expected", [(f, e) for _, f, e in DT_CASES],
-                             ids=[i for i, _, _ in DT_CASES])
-    def test_a3_decision_table(flags, expected):
-        s, c = dt_case(**flags)
->       assert registration_decision(s, c) == expected
-E       AssertionError: assert 'REGISTERED' == 'DUES_BLOCK'
-E         
-E         - DUES_BLOCK
-E         + REGISTERED
-
-tests/test_blackbox.py:131: AssertionError
-________________________ test_a3_decision_table[DT-05] _________________________
-
-flags = {'full': True}, expected = 'WAITLISTED'
-
-    @pytest.mark.parametrize("flags,expected", [(f, e) for _, f, e in DT_CASES],
-                             ids=[i for i, _, _ in DT_CASES])
-    def test_a3_decision_table(flags, expected):
-        s, c = dt_case(**flags)
->       assert registration_decision(s, c) == expected
-E       AssertionError: assert 'REGISTERED' == 'WAITLISTED'
-E         
-E         - WAITLISTED
-E         + REGISTERED
-
-tests/test_blackbox.py:131: AssertionError
+tests/test_blackbox.py:105: AssertionError
 ________________________ test_a3_decision_table[DT-07] _________________________
 
 flags = {'dues': True, 'already': True, 'prereq': True, 'credit': True, ...}
 expected = 'DUES_BLOCK'
 
-    @pytest.mark.parametrize("flags,expected", [(f, e) for _, f, e in DT_CASES],
-                             ids=[i for i, _, _ in DT_CASES])
+    @pytest.mark.parametrize(
+        "flags,expected",
+        [pytest.param(f, e, id=i, marks=pytest.mark.trace(i)) for i, f, e in DT_CASES],
+    )
     def test_a3_decision_table(flags, expected):
         s, c = dt_case(**flags)
 >       assert registration_decision(s, c) == expected
@@ -119,13 +90,15 @@ E
 E         - DUES_BLOCK
 E         + ALREADY_REGISTERED
 
-tests/test_blackbox.py:131: AssertionError
+tests/test_blackbox.py:173: AssertionError
 ________________________ test_a3_decision_table[DT-08] _________________________
 
 flags = {'dues': True, 'full': True}, expected = 'DUES_BLOCK'
 
-    @pytest.mark.parametrize("flags,expected", [(f, e) for _, f, e in DT_CASES],
-                             ids=[i for i, _, _ in DT_CASES])
+    @pytest.mark.parametrize(
+        "flags,expected",
+        [pytest.param(f, e, id=i, marks=pytest.mark.trace(i)) for i, f, e in DT_CASES],
+    )
     def test_a3_decision_table(flags, expected):
         s, c = dt_case(**flags)
 >       assert registration_decision(s, c) == expected
@@ -134,10 +107,10 @@ E
 E         - DUES_BLOCK
 E         + REGISTERED
 
-tests/test_blackbox.py:131: AssertionError
+tests/test_blackbox.py:173: AssertionError
 ___________________ test_a4_register_waitlisted_appends_only ___________________
 
-    def test_a4_register_waitlisted_appends_only():
+    def test_a4_register_waitlisted_appends_only():  # FR-12
         s, c = make_student(), make_course(enrolled=30)
         before_s = copy.deepcopy(vars(s))
         register_course(s, c)
@@ -152,7 +125,7 @@ E         - [
 E         -     'S1',
 E         - ]
 
-tests/test_blackbox.py:153: AssertionError
+tests/test_blackbox.py:197: AssertionError
 ___________ test_a4_failed_registration_no_state_change[DUES_BLOCK] ____________
 
 flags = {'dues': True}
@@ -160,7 +133,7 @@ flags = {'dues': True}
     @pytest.mark.parametrize("flags", [
         dict(dues=True), dict(already=True), dict(prereq=True), dict(credit=True),
     ], ids=["DUES_BLOCK", "ALREADY_REGISTERED", "PREREQUISITES_MISSING", "CREDIT_LIMIT"])
-    def test_a4_failed_registration_no_state_change(flags):
+    def test_a4_failed_registration_no_state_change(flags):  # FR-12
         s, c = dt_case(**flags)
         before = snapshot(s, c)
         register_course(s, c)
@@ -176,10 +149,10 @@ E                   'student_id': 'S1',...
 E         
 E         ...Full output truncated (25 lines hidden), use '-vv' to show
 
-tests/test_blackbox.py:169: AssertionError
+tests/test_blackbox.py:215: AssertionError
 __________________________ test_a4_withdraw_enrolled ___________________________
 
-    def test_a4_withdraw_enrolled():
+    def test_a4_withdraw_enrolled():  # FR-13
         s = make_student(current_credits=13, registered_courses={"C1"})
         c = make_course(credit_hours=3, enrolled=11)
         assert withdraw_course(s, c) is True
@@ -189,16 +162,88 @@ __________________________ test_a4_withdraw_enrolled ___________________________
 E       AssertionError: assert 11 == 10
 E        +  where 11 = Course(code='C1', credit_hours=3, capacity=30, enrolled=11, prerequisites=set(), waitlist=[]).enrolled
 
-tests/test_blackbox.py:177: AssertionError
+tests/test_blackbox.py:224: AssertionError
+=============================== warnings summary ===============================
+tests/test_blackbox.py:44
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:44: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-7", "A2-TID-7", "DT-06")
+
+tests/test_blackbox.py:49
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:49: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-8", "DT-01")
+
+tests/test_blackbox.py:54
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:54: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-9", "DT-05")
+
+tests/test_blackbox.py:60
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:60: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-1")
+
+tests/test_blackbox.py:65
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:65: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-2")
+
+tests/test_blackbox.py:70
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:70: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-3")
+
+tests/test_blackbox.py:76
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:76: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-4")
+
+tests/test_blackbox.py:81
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:81: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-5")
+
+tests/test_blackbox.py:86
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:86: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-6")
+
+tests/test_blackbox.py:91
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:91: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A1-TID-8")
+
+tests/test_blackbox.py:98
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:98: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-1")
+
+tests/test_blackbox.py:103
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:103: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-2")
+
+tests/test_blackbox.py:108
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:108: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-3")
+
+tests/test_blackbox.py:113
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:113: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-4")
+
+tests/test_blackbox.py:119
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:119: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-5")
+
+tests/test_blackbox.py:125
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:125: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-6")
+
+tests/test_blackbox.py:131
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:131: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.trace("A2-TID-10")
+
+tests/test_blackbox.py:169
+  /home/zeyam-hussain/SQE-A2/SQE_Assignment2_Registration_Student/tests/test_blackbox.py:169: PytestUnknownMarkWarning: Unknown pytest.mark.trace - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    [pytest.param(f, e, id=i, marks=pytest.mark.trace(i)) for i, f, e in DT_CASES],
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 =========================== short test summary info ============================
+FAILED tests/test_blackbox.py::test_dup_dues1_dues_block - AssertionError: as...
+FAILED tests/test_blackbox.py::test_dup_full_course_waitlisted - AssertionErr...
 FAILED tests/test_blackbox.py::test_a2_tid_2 - assert False is True
-FAILED tests/test_blackbox.py::test_a2_tid_8 - AssertionError: assert 'REGIST...
-FAILED tests/test_blackbox.py::test_a2_tid_9 - AssertionError: assert 'REGIST...
-FAILED tests/test_blackbox.py::test_a3_decision_table[DT-01] - AssertionError...
-FAILED tests/test_blackbox.py::test_a3_decision_table[DT-05] - AssertionError...
 FAILED tests/test_blackbox.py::test_a3_decision_table[DT-07] - AssertionError...
 FAILED tests/test_blackbox.py::test_a3_decision_table[DT-08] - AssertionError...
 FAILED tests/test_blackbox.py::test_a4_register_waitlisted_appends_only - Ass...
 FAILED tests/test_blackbox.py::test_a4_failed_registration_no_state_change[DUES_BLOCK]
 FAILED tests/test_blackbox.py::test_a4_withdraw_enrolled - AssertionError: as...
-======================== 10 failed, 29 passed in 0.11s =========================
+================== 8 failed, 27 passed, 18 warnings in 0.09s ===================
