@@ -13,6 +13,15 @@ python -m pip install -r requirements.txt
 python -c "from registration import Student, Course, register_course; print(register_course(Student('S001'), Course('CS201', 3, 30)))"
 ```
 
+## Running tests and coverage
+Run these commands from the repository root:
+```bash
+python -m pytest tests/test_blackbox.py --cov=registration --cov-branch --cov-report=term-missing > coverage_initial.txt 2>&1
+python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missing > coverage_final.txt 2>&1
+```
+
+The supplied implementation intentionally has defects, so failing tests are expected evidence and should not be hidden. The GitHub Actions workflow runs both suites, uploads their output as an artifact, and reports a failed check when pytest fails.
+
 ## Suggested student workflow
 1. Derive ECP/BVA/decision table tests from `REQUIREMENTS.md` **without using implementation behavior as the expected result**.
 2. Create `tests/test_blackbox.py`, execute the cases, and log suspected defects as GitHub Issues.
