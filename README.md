@@ -6,6 +6,8 @@ An in-memory Python student course-registration system used as the system under 
 - `registration.py`: Python application to test.
 - `REQUIREMENTS.md`: authoritative functional requirements, status strings, and sample scenarios.
 - `requirements.txt`: dependencies for test development.
+- `tests/`: black-box and white-box pytest suites.
+- `docs/`: test designs, decision table, control-flow diagram, reports, and original SRS.
 
 ## Getting started
 ```bash
@@ -16,11 +18,20 @@ python -c "from registration import Student, Course, register_course; print(regi
 ## Running tests and coverage
 Run these commands from the repository root:
 ```bash
-python -m pytest tests/test_blackbox.py --cov=registration --cov-branch --cov-report=term-missing > coverage_initial.txt 2>&1
-python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missing > coverage_final.txt 2>&1
+mkdir -p docs
+python -m pytest tests/test_blackbox.py --cov=registration --cov-branch --cov-report=term-missing > docs/coverage_initial.txt 2>&1
+python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missing > docs/coverage_final.txt 2>&1
 ```
 
-The supplied implementation intentionally has defects, so failing tests are expected evidence and should not be hidden. The GitHub Actions workflow runs both suites, uploads their output as an artifact, and reports a failed check when pytest fails.
+The supplied implementation intentionally has defects, so failing tests are expected evidence and should not be hidden. The GitHub Actions workflow runs both suites, writes reports under `docs/`, uploads them as an artifact, and reports a failed check when pytest fails.
+
+## Testing documents
+- `docs/blackbox_test_design.xlsx`: equivalence-class and boundary test cases with observed results.
+- `docs/decision_table.xlsx`: decision conditions, expected outcomes, and observed outcomes.
+- `docs/cfg.png`: control-flow graph for `registration_decision`.
+- `docs/testing_report.pdf`: coverage summary and known test failures.
+- `docs/Student_Registration_SRS.docx`: supplied source specification.
+- `docs/coverage_initial.txt` and `docs/coverage_final.txt`: raw pytest-cov output.
 
 ## Suggested student workflow
 1. Derive ECP/BVA/decision table tests from `REQUIREMENTS.md` **without using implementation behavior as the expected result**.

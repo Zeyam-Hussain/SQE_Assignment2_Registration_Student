@@ -25,21 +25,22 @@ jobs:
       - name: Run initial black-box coverage
         shell: bash
         run: |
+          mkdir -p docs
           set +e
-          python -m pytest tests/test_blackbox.py --cov=registration --cov-branch --cov-report=term-missing > coverage_initial.txt 2>&1
+          python -m pytest tests/test_blackbox.py --cov=registration --cov-branch --cov-report=term-missing > docs/coverage_initial.txt 2>&1
           result=$?
-          cat coverage_initial.txt
-          printf '%s\n' "$result" > coverage_initial_exit_code.txt
+          cat docs/coverage_initial.txt
+          printf '%s\n' "$result" > docs/coverage_initial_exit_code.txt
           exit 0
 
       - name: Run complete test and coverage suite
         shell: bash
         run: |
           set +e
-          python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missing > coverage_final.txt 2>&1
+          python -m pytest tests/ --cov=registration --cov-branch --cov-report=term-missing > docs/coverage_final.txt 2>&1
           result=$?
-          cat coverage_final.txt
-          printf '%s\n' "$result" > coverage_final_exit_code.txt
+          cat docs/coverage_final.txt
+          printf '%s\n' "$result" > docs/coverage_final_exit_code.txt
           exit 0
 
       - name: Upload test and coverage evidence
@@ -48,17 +49,17 @@ jobs:
         with:
           name: pytest-coverage-evidence
           path: |
-            coverage_initial.txt
-            coverage_final.txt
-            coverage_initial_exit_code.txt
-            coverage_final_exit_code.txt
+            docs/coverage_initial.txt
+            docs/coverage_final.txt
+            docs/coverage_initial_exit_code.txt
+            docs/coverage_final_exit_code.txt
           if-no-files-found: error
 
       - name: Fail check when tests fail
         if: always()
         shell: bash
         run: |
-          if [[ "$(cat coverage_initial_exit_code.txt)" != "0" || "$(cat coverage_final_exit_code.txt)" != "0" ]]; then
+          if [[ "$(cat docs/coverage_initial_exit_code.txt)" != "0" || "$(cat docs/coverage_final_exit_code.txt)" != "0" ]]; then
             echo "One or more pytest runs failed. See the uploaded evidence artifact."
             exit 1
           fi
