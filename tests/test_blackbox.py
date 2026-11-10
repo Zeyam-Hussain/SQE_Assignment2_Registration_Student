@@ -51,6 +51,24 @@ def test_dup_dues1_dues_block():  # FR-04
     assert registration_decision(make_student(outstanding_dues=1), make_course()) == "DUES_BLOCK"
 
 
+@pytest.mark.parametrize(
+    "outstanding_dues,expected",
+    [
+        (0, "REGISTERED"),
+        (1, "DUES_BLOCK"),
+        (999, "DUES_BLOCK"),
+        (1000, "DUES_BLOCK"),
+        (1001, "DUES_BLOCK"),
+    ],
+)
+def test_issue_3_positive_outstanding_dues_block_registration(
+    outstanding_dues, expected
+):
+    assert registration_decision(
+        make_student(outstanding_dues=outstanding_dues), make_course()
+    ) == expected
+
+
 @pytest.mark.trace("A2-TID-9", "DT-05")
 def test_dup_full_course_waitlisted():  # FR-08
     assert registration_decision(make_student(), make_course(capacity=30, enrolled=30)) == "WAITLISTED"
