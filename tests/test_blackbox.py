@@ -56,6 +56,40 @@ def test_dup_full_course_waitlisted():  # FR-08
     assert registration_decision(make_student(), make_course(capacity=30, enrolled=30)) == "WAITLISTED"
 
 
+@pytest.mark.parametrize(
+    "enrolled,expected",
+    [(29, "REGISTERED"), (30, "WAITLISTED")],
+)
+def test_issue_4_course_capacity_boundary(enrolled, expected):
+    assert registration_decision(
+        make_student(), make_course(capacity=30, enrolled=enrolled)
+    ) == expected
+
+
+def test_issue_4_eligible_student_at_capacity_is_waitlisted():
+    student = make_student()
+    course = make_course(capacity=30, enrolled=30)
+
+    assert register_course(student, course) == "WAITLISTED"
+    assert course.waitlist == ["S1"]
+    assert course.enrolled == 30
+    assert student.current_credits == 10
+    assert student.registered_courses == set()
+
+
+@pytest.mark.parametrize(
+    "capacity,enrolled",
+    [(0, 0), (30, 31)],
+)
+def test_issue_4_invalid_capacity_or_enrollment_still_raises(
+    capacity, enrolled
+):
+    with pytest.raises(ValueError, match="Invalid capacity or enrollment"):
+        registration_decision(
+            make_student(), make_course(capacity=capacity, enrolled=enrolled)
+        )
+
+
 # ======================= A1: Equivalence Class Partitioning =======================
 @pytest.mark.trace("A1-TID-1")
 def test_a1_tid_1():  # FR-01
